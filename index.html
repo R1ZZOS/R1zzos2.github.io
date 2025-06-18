@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>mínimo!</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon.png" />
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.3/build/global/luxon.min.js"></script>
+  <style>body{margin:0;background:#0f0f0f;color:#fff;font-family:sans-serif}h1{text-align:center;color:#facc15}.calendar-container{max-width:400px;margin:auto;background:#1e1e1e;padding:10px;border-radius:16px;box-shadow:0 0 20px rgba(250,204,21,.2)}.month-title{text-align:center;font-size:1.4rem;text-transform:capitalize}.days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.day-name{text-align:center;color:#888;font-size:0.75rem}.day{min-height:60px;background:#2a2a2a;border-radius:8px;padding:4px;font-size:0.7rem;text-align:center}.trabajo{background:#3b82f6}.libre{background:#10b981}.evaluacion{background:#f59e0b;font-weight:bold}.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;z-index:999}.modal-content{background:#1e1e1e;padding:20px;border-radius:12px;text-align:center;color:#fff;max-width:300px;box-shadow:0 0 15px #facc15}.close{float:right;font-size:1.2rem;cursor:pointer;color:#facc15}</style>
+</head>
+<body>
+  <h1>mínimo!</h1>
+  <div class="calendar-container" id="swipeArea">
+    <div id="monthTitle" class="month-title"></div>
+    <div class="days" id="days"></div>
+  </div>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
+      <h2 id="modalFecha"></h2>
+      <p><strong>Tipo:</strong> <span id="modalTipo"></span></p>
+      <p id="modalEval" style="display:none;"><strong>Evaluación:</strong> <span id="modalEvaluacion"></span></p>
+    </div>
+  </div>
+  <script src="swipe.js"></script>
+  <script src="main.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>
